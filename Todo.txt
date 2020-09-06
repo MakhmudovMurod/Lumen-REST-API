@@ -1,0 +1,70 @@
+                                                        # FINANCE REST API
+# 1.Using PHP 7.4+
+# 2.Using MicroFramework : Lumen, Silex, Slim
+# 3.Using Third Party Libraries
+# 4.Using MYSQL or PostgreSQL
+5.Using PDO or Doctrine DBAL, any type of DBAL
+6.ORM not allowed
+
+# 7.Authentication(table) : 
+                # - username
+                # - password
+                - role : amdmin / user
+                # - user_ip
+                # - register_date
+
+# 8.JWT Authorization (expire 60 min)
+
+# 9.Entrance log (table)
+                # - entrance date
+                # - ip_user
+                # - user_agent
+
+# 10.Profile (table) :
+                # - fullname
+                # - phone_number
+                # - date_of_birth
+
+11.Accounts (table) 
+                - account_number(unique)
+                - currency
+                - amount
+                - status (avtive/blocked)
+- same user doesn't have same currency account
+
+12.Transactions (table):
+                - date
+                - status (succes,cancel,mistake)
+                - amount 
+                - currency
+                - source 
+                - destination
+- only for same currency Accounts
+- converting amount currency
+- can't do transactions via blocked Accounts
+- can't do transactions if amount of transaction is greater amount of account
+- if can't do transaction, save transaction and update status  mistake
+
+                            - from 
+                            - to
+13.List of transactions :---- account holders         + pagination 
+                            - transaction amount
+                            - status                   
+                
+14.List of transactions by account   + pagination
+
+15.List of Authorization + pagination
+
+16.Admin can : 
+                - create user
+                - create profile
+                - create account
+                - top up an account
+                - block the account
+                - create a transfer from account to account with restrictions as a user
+                - see a list of all users + filters: name, phone, login, birthday, registration date + pagination
+                - view a list of all accounts, full owner data + filter should also be returned: user, account + pagination
+                - view all transactions + filter by account + pagination
+                - cancel transaction , Only successful transactions can be canceled , If we cancel the transaction, the status changes to canceled
+                A second transaction is created, which indicates the canceled transaction. It can no longer be canceled.
+                  
